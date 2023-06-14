@@ -74,7 +74,7 @@ func openaiRequest(transcribedText string) string {
 	logger.Println("Making request to OpenAI...")
 	url := "https://api.openai.com/v1/completions"
 	formData := `{
-"model": "text-davinci-003",
+"model": vars.APIConfig.Knowledge.Model,
 "prompt": "` + sendString + `",
 "temperature": 0.7,
 "max_tokens": 256,

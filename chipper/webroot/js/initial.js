@@ -90,6 +90,7 @@ function initKGAPIKey() {
     updateSetupStatus("Setting knowledge graph settings...")
     var provider = document.getElementById("kgProvider").value
     var key = ""
+    var model = ""
     var id = ""
     var intentgraph = ""
     var robotName = ""
@@ -99,6 +100,7 @@ function initKGAPIKey() {
         if (document.getElementById("intentyes").checked == true) {
             intentgraph = "true"
             robotName = document.getElementById("openAIRobotName").value
+            model = document.getElementById("openAIModel").value
         } else {
             intentgraph = "false"
         }
@@ -112,7 +114,7 @@ function initKGAPIKey() {
         intentgraph = "false"
     }
 
-    var data = "provider=" + provider + "&api_key=" + key + "&api_id=" + id + "&intent_graph=" + intentgraph + "&robot_name=" + robotName
+    var data = "provider=" + provider + "&api_key=" + key + "&api_id=" + id + "&intent_graph=" + intentgraph + "&robot_name=" + robotName + "&model=" + model;
     fetch("/api/set_kg_api?" + data)
         .then(response => response.text())
         .then((response) => {
